@@ -6,49 +6,82 @@ import java.util.*;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        HashSet<String> set = new HashSet<>(); // doesn't keep the order
-        set.add("d");
-        set.add("b");
-        set.add("D");
-        set.add("d");
+        LinkedHashSet<friendMarks> friendMarksTreeSet = new LinkedHashSet<>();
 
-        Iterator<String> itr = set.iterator();
-        while(itr.hasNext()){
-            String str = itr.next();
-            System.out.print(str + " ");
+        friendMarksTreeSet.add(new friendMarks("c", "e", 65));
+        friendMarksTreeSet.add(new friendMarks("b", "f", 95));
+        friendMarksTreeSet.add(new friendMarks("a", "g", 45));
+
+        TreeSet<friendMarks> treeSet0 = new TreeSet<>(new marksCompare());
+
+        treeSet0.addAll(friendMarksTreeSet);
+        for (friendMarks tree : treeSet0) {
+            System.out.print(tree + " ");
+        }
+    }
+
+    public static class friendMarks {
+        String name;
+        String nickName;
+        int marks;
+
+        public friendMarks(String name, String nickName, int marks) {
+            this.name = name;
+            this.nickName = nickName;
+            this.marks = marks;
         }
 
-        LinkedHashSet<String> set1 = new LinkedHashSet<>(); //Keep the order
-        set1.add("3");
-        set1.add("2");
-        set1.add("1");
-        set1.add("1");
+        public String getName() {
+            return name;
+        }
 
-        System.out.println(set1.size());
-        System.out.println(set1.remove("2"));
-        System.out.println("Does contain : " + set1.contains("2"));
+        public String getNickName() {
+            return nickName;
+        }
 
-        System.out.println(set1);
+        public int getMarks() {
+            return marks;
+        }
 
-        TreeSet<String> set3 = new TreeSet<>();
+        public void setName(String name) {
+            this.name = name;
+        }
 
-        set3.add("2");
-        set3.add("2");
-        set3.add("2");
-        set3.add("A");
-        set3.add("B");
-        set3.add("C");
+        public void setNickName(String nickName) {
+            this.nickName = nickName;
+        }
 
-        System.out.println(set3);
+        public void setMarks(int marks) {
+            this.marks = marks;
+        }
 
-        LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>();
-        linkedHashSet.add("A");
-        linkedHashSet.add("B");
-        linkedHashSet.add("C");
-        linkedHashSet.add("D");
-        String[] values = new String[linkedHashSet.size()];
-        linkedHashSet.toArray(values);
-        System.out.println(Arrays.toString(values));
+        @Override
+        public String toString() {
+            return "friendMarks{" +
+                    "name='" + name + '\'' +
+                    ", nickName='" + nickName + '\'' +
+                    ", marks=" + marks +
+                    '}';
+        }
+    }
 
+    public static class nameCompare implements Comparator<friendMarks> {
+        public int compare(friendMarks friendMark1s, friendMarks friendMark2s) {
+            return friendMark1s.getName().compareTo(friendMark2s.getName());
+        }
+    }
+
+    public static class NickNameCompare implements Comparator<friendMarks> {
+        public int compare(friendMarks friendMark1s, friendMarks friendMark2s) {
+            return friendMark1s.getNickName().compareTo(friendMark2s.getNickName());
+        }
+    }
+
+    public static class marksCompare implements Comparator<friendMarks> {
+        public int compare(friendMarks friendMarks1, friendMarks friendMark2s) {
+            if (friendMarks1.getMarks() > friendMark2s.getMarks()) return 1;
+            else if (friendMarks1.getMarks() == friendMark2s.getMarks()) return 0;
+            else return -1;
+        }
     }
 }
