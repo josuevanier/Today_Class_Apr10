@@ -27,6 +27,10 @@ public class Main {
         set1.add("1");
         set1.add("1");
 
+        System.out.println(set1.size());
+        System.out.println(set1.remove("2"));
+        System.out.println("Does contain : " + set1.contains("2"));
+
         System.out.println(set1);
 
         TreeSet<String> set3 = new TreeSet<>();
@@ -39,6 +43,16 @@ public class Main {
         set3.add("C");
 
         System.out.println(set3);
+
+        LinkedHashSet<Book> books = new LinkedHashSet<>();
+
+        books.add(new Book(12,"2","s","2"));
+        books.add(new Book(12,"2","s","2"));
+        books.add(new Book(12,"2","s","2"));
+
+        for(Book b : books){
+            System.out.println(b.id + b.author);
+        }
 
     }
 }
