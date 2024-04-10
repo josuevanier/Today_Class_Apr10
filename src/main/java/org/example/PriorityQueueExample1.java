@@ -9,6 +9,6 @@ public class PriorityQueueExample1 {
         numbers.add(10);
         numbers.add(-1);
 
-        System.out.println(numbers);
+        System.out.println(numbers); //
     }
 }
