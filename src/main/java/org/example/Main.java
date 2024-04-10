@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.TreeSet;
+import java.util.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -44,15 +41,14 @@ public class Main {
 
         System.out.println(set3);
 
-        LinkedHashSet<Book> books = new LinkedHashSet<>();
-
-        books.add(new Book(12,"2","s","2"));
-        books.add(new Book(12,"2","s","2"));
-        books.add(new Book(12,"2","s","2"));
-
-        for(Book b : books){
-            System.out.println(b.id + b.author);
-        }
+        LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>();
+        linkedHashSet.add("A");
+        linkedHashSet.add("B");
+        linkedHashSet.add("C");
+        linkedHashSet.add("D");
+        String[] values = new String[linkedHashSet.size()];
+        linkedHashSet.toArray(values);
+        System.out.println(Arrays.toString(values));
 
     }
 }
